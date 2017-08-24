@@ -18,6 +18,6 @@ def download(abs_path=os.path.dirname(os.path.abspath(__file__))):
         f.write(requests.get(base_url+str(i)+'.JPG').content)
         f.close()
 
-print("Input absolute valid path where you want to save convocation photos")
+print("Input valid absolute path where you want to save convocation photos")
 abs_path=input().strip()
 download(abs_path)
