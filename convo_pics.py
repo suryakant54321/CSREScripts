@@ -20,12 +20,12 @@ def download(abs_path=os.path.dirname(os.path.abspath(__file__))):
         filename='DSC_6'+str(i)+'.JPG'
         urlfilename = base_url+str(i)+'.JPG'
         exist = exists(urlfilename)
-        if(exist==1):
+        if(exist):
             full_path=path+'\\'+filename
             f=open(full_path,'wb')
             f.write(requests.get(base_url+str(i)+'.JPG').content)
             f.close()
-        elif(exist==0):
+        else:
             pass
         
         print(base_url+str(i)+'.JPG')
@@ -33,10 +33,11 @@ def download(abs_path=os.path.dirname(os.path.abspath(__file__))):
 def exists(path):
     ret = requests.head(path)
     if(ret.status_code == 200):
-        print('file exists')
-        return 1
+        print('file exists at the index')
+        return True
     else:
-        return 0
+        print('file does not exists at the index ')
+        return False
 
 if __name__=="__main__":
     main()
